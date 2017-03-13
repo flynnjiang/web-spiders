@@ -38,7 +38,7 @@ if __name__ == '__main__':
 	add_date = 0
 
 	now = time.strftime('%Y%m%d-%H%M%S')
-	f1 = open('new-house-price_fang.com_' + now + '.csv', 'w')
+	#f1 = open('new-house-price_fang.com_' + now + '.csv', 'w')
 	f2 = open('2rd-house-price_fang.com_' + now + '.csv', 'w')
 
 	for i in range(len(citys)):
@@ -50,25 +50,25 @@ if __name__ == '__main__':
 		
 		data = rsp.read().split('&')
 		price_2rd = json.loads(data[0])
-		price_new = json.loads(data[1])
+		#price_new = json.loads(data[1])
 		
 		# Write date
 		if add_date == 0:
 			add_date = 1
-			for j in range(len(price_new)):
-				f1.write(',' + us2month(price_new[j][0]))
-				f2.write(',' + us2month(price_new[j][0]))
+			for j in range(len(price_2rd)):
+				#f1.write(',' + us2month(price_new[j][0]))
+				f2.write(',' + us2month(price_2rd[j][0]))
 		
 		# Write price
-		f1.write('\n' + citys[i])
-		for j in range(len(price_new)):
-			f1.write(', %d' % price_new[j][1])
+		#f1.write('\n' + citys[i])
+		#for j in range(len(price_new)):
+		#	f1.write(', %d' % price_new[j][1])
 			
 		f2.write('\n' + citys[i])
 		for j in range(len(price_2rd)):
 			f2.write(', %d' % price_2rd[j][1])
 
-	f1.close()
+	#f1.close()
 	f2.close()
 
 	print 'All done!'
